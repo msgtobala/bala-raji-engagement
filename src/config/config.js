@@ -21,7 +21,7 @@ export const buttonConfig = [
     id: 'personal_pics',
   },
   {
-    label: 'We are excited to see us together? 🤞🏼',
+    label: 'We are excited to see you together 🤞🏼',
     id: 'join_bless',
   },
 ];
@@ -51,33 +51,13 @@ export const botConfig = {
   personal_pics: {
     text: [`Here you go`],
     image: [Images.Balaji, Images.Raji, Images.Together],
-    text1: [`Cute couples right, Yes, we are!!!`],
+    text1: [`Cute couples right. Yes, we are!!!`],
   },
   join_bless: {
     text: [`Thanks we meet you on our engagement day!`],
     image: [Images.Together],
   },
 };
-
-// export const botConfig = {
-//   engagement_date: {
-//     text: [
-//       `It's on the <b>${Constants.engagementDate}</b> of August.`,
-//       `Yeah we know, it's less than even a month and we are super nervous!😬`,
-//       `Please be there by ${Constants.engagementTime} 🙏 `,
-//     ],
-//     audio: Audios.EngagementSong,
-//   },
-//   invitation: {
-//     text: [`We may not have it all together, but together we have it all.`],
-//     image: [Images.InvitationCard],
-//     video: Videos.EngagementVideo,
-//   },
-//   join_bless: {
-//     text: [`Are you excited to see our new beginning?`],
-//     image: [Images.JoinBless],
-//   },
-// };
 
 export const chatInitialData = [
   {
