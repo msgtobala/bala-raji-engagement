@@ -69,6 +69,7 @@ const BotMessages = (props) => {
             id: new Date(),
             type: currentChat.type,
             chat: currentChat.chat,
+            link: currentChat?.link ?? null,
             sender: 'bot',
           });
           chatIndex.current += 1;

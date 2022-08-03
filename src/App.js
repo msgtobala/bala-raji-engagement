@@ -16,7 +16,6 @@ const App = () => {
 
   const audioRef = useRef(false);
   const chatRef = useRef(false);
-  const videoRef = useRef(false);
 
   const addInitialChatData = () => {
     setChatData(chatInitialData);
@@ -72,6 +71,7 @@ const App = () => {
           botChats.push({
             type: 'location',
             chat: imageMessages[text],
+            link: config.link,
             sender: 'bot',
           });
         }
@@ -127,7 +127,6 @@ const App = () => {
             isBotTyping={isBotTyping}
             resetBotTyping={resetBotTyping}
             audioRef={audioRef}
-            videoRef={videoRef}
             scrollToBottom={scrollToBottom}
           />
           <BotFooter

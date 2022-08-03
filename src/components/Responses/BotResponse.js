@@ -3,12 +3,11 @@ import React from 'react';
 import {
   StyledBotResponse,
   MessageBotImage,
-  VideoContainer,
 } from './Response.styled';
 import { BotChatBubble } from '../ChatBubble/ChatBubble.styled';
 
 const BotResponse = (props) => {
-  const { response, audioRef, videoRef } = props;
+  const { response, audioRef } = props;
   return (
     <StyledBotResponse>
       {(response.type === 'text' || response.type === 'text1') && (
@@ -26,16 +25,9 @@ const BotResponse = (props) => {
           <source type="audio/mpeg" />
         </audio>
       </BotChatBubble>
-      {response.type === 'video' && (
-        <VideoContainer>
-          <video ref={videoRef} width="200" height="240" controls>
-            <source src={response.chat} type="video/mp4" />
-          </video>
-        </VideoContainer>
-      )}
       {response.type === 'location' && (
         <BotChatBubble>
-          <a href={response.link} target="_blank" rel="noreferrer">
+          <a href={response?.link} target="_blank" rel="noreferrer">
             <img
               src={response.chat}
               style={{ width: '100%' }}
