@@ -1,25 +1,150 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
 
-function App() {
+import Audios from './resources/audios';
+import { Bot, BotContainer, BotSection } from './App.styled';
+import BotMessages from './components/BotMessages/BotMessages';
+import BotFooter from './components/BotFooter/BotFooter';
+import { botConfig, buttonConfig, chatInitialData } from './config/config';
+import images from './resources/images';
+
+const App = () => {
+  const [chatData, setChatData] = useState({});
+  const [currentButtonFlow, setCurrentButtonFlow] = useState(buttonConfig);
+  const [isBotTyping, setBotTyping] = useState(true);
+  const [showBottomBar, setShowBottomBar] = useState(false);
+  const [userSelection, setUserSelection] = useState(null);
+
+  const audioRef = useRef(false);
+  const chatRef = useRef(false);
+  const videoRef = useRef(false);
+
+  const addInitialChatData = () => {
+    setChatData(chatInitialData);
+  };
+
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.src = Audios.EngagementSong;
+      // audioRef.current.play();
+    }
+  };
+
+  const resetBotTyping = () => {
+    setBotTyping(false);
+    setShowBottomBar(true);
+  };
+
+  const constructBotChatData = (chatId) => {
+    const config = botConfig[chatId];
+    const botChats = [];
+    const botConfigs = Object.keys(config);
+    chatId === 'engagement_date' && playAudio();
+    for (let chat = 0; chat < botConfigs.length; chat++) {
+      if (botConfigs[chat] === 'text' || botConfigs[chat] === 'text1') {
+        const textMessages = config[botConfigs[chat]];
+        for (let text = 0; text < textMessages.length; text++) {
+          botChats.push({
+            type: 'text',
+            chat: textMessages[text],
+            sender: 'bot',
+          });
+        }
+      }
+
+      if (botConfigs[chat] === 'image') {
+        const imageMessages = config[botConfigs[chat]];
+        for (let text = 0; text < imageMessages.length; text++) {
+          botChats.push({
+            type: 'image',
+            chat: imageMessages[text],
+            sender: 'bot',
+          });
+        }
+      }
+
+      if (botConfigs[chat] === 'location') {
+        const imageMessages = config[botConfigs[chat]];
+        for (let text = 0; text < imageMessages.length; text++) {
+          botChats.push({
+            type: 'location',
+            chat: imageMessages[text],
+            sender: 'bot',
+          });
+        }
+      }
+      console.log(botConfigs[chat]);
+    }
+    return botChats;
+  };
+
+  const onUserSelection = (id) => {
+    const chatResponse = currentButtonFlow.find((item) => item.id === id);
+    const buttons = currentButtonFlow.filter(
+      (buttonFlow) => buttonFlow.id !== id
+    );
+    setUserSelection(id);
+    setCurrentButtonFlow(buttons);
+    setShowBottomBar(false);
+    const botMessages = constructBotChatData(id);
+    setBotTyping(true);
+    const updatedChatData = [
+      {
+        type: 'text',
+        chat: chatResponse.label,
+        sender: 'user',
+      },
+      ...botMessages,
+    ];
+    setChatData(updatedChatData);
+  };
+
+  const scrollToBottom = () => {
+    const elem = document.getElementById('scroll-to-bottom');
+    elem.scrollTo(0, elem.scrollHeight);
+    const newNode = chatRef;
+    chatRef.current.scrollTo(0, chatRef.current.scrollHeight);
+    newNode.current.scrollTop = newNode.current.scrollHeight;
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [showBottomBar]);
+
+  useEffect(() => {
+    addInitialChatData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Bot>
+      <BotContainer>
+        <BotSection>
+          <BotMessages
+            chatRef={chatRef}
+            chatData={chatData}
+            isBotTyping={isBotTyping}
+            resetBotTyping={resetBotTyping}
+            audioRef={audioRef}
+            videoRef={videoRef}
+            scrollToBottom={scrollToBottom}
+          />
+          <BotFooter
+            buttonConfig={currentButtonFlow}
+            isBotTyping={isBotTyping}
+            showBottomBar={showBottomBar}
+            onUserSelection={onUserSelection}
+            userSelection={userSelection}
+          />
+        </BotSection>
+      </BotContainer>
+      <div style={{display: "none"}}>
+        <img src={images.InvitationCard} alt="cache0"/>
+        <img src={images.Balaji} alt="cache1"/>
+        <img src={images.Raji} alt="cache2"/>
+        <img src={images.Together} alt="cache3"/>
+        <img src={images.LocationImage} alt="cache3"/>
+      </div>
+    </Bot>
   );
-}
+};
 
 export default App;
