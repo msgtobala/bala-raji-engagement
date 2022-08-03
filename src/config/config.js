@@ -9,7 +9,7 @@ export const buttonConfig = [
     id: 'engagement_date',
   },
   {
-    label: 'Invitation Card & Video ❤️',
+    label: 'See Invitation Card ❤️',
     id: 'invitation',
   },
   {
