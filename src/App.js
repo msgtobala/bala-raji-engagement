@@ -111,6 +111,8 @@ const App = () => {
   }, [showBottomBar]);
 
   useEffect(() => {
+    var goFS = document.getElementById('goFS');
+    goFS.click();
     addInitialChatData();
   }, []);
 
