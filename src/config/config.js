@@ -50,8 +50,10 @@ export const botConfig = {
   },
   personal_pics: {
     text: [`Here you go`],
-    image: [Images.Balaji, Images.Raji, Images.Together],
-    text1: [`Cute couples right. Yes, we are!!!`],
+    image: [Images.TomAndJerry],
+    text1: [`Ohh!!! Sorry, that's not our real pics 😢`],
+    image1: [Images.Balaji, Images.Raji, Images.Together],
+    text2: [`Cute couples right. Yes, we are!!!`],
   },
   join_bless: {
     text: [`Thanks we meet you on our engagement day!`],

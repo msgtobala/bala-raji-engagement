@@ -40,7 +40,11 @@ const App = () => {
     const botConfigs = Object.keys(config);
     chatId === 'engagement_date' && playAudio();
     for (let chat = 0; chat < botConfigs.length; chat++) {
-      if (botConfigs[chat] === 'text' || botConfigs[chat] === 'text1') {
+      if (
+        botConfigs[chat] === 'text' ||
+        botConfigs[chat] === 'text1' ||
+        botConfigs[chat] === 'text2'
+      ) {
         const textMessages = config[botConfigs[chat]];
         for (let text = 0; text < textMessages.length; text++) {
           botChats.push({
@@ -51,7 +55,7 @@ const App = () => {
         }
       }
 
-      if (botConfigs[chat] === 'image') {
+      if (botConfigs[chat] === 'image' || botConfigs[chat] === 'image1') {
         const imageMessages = config[botConfigs[chat]];
         for (let text = 0; text < imageMessages.length; text++) {
           botChats.push({
@@ -138,12 +142,13 @@ const App = () => {
           />
         </BotSection>
       </BotContainer>
-      <div style={{display: "none"}}>
-        <img src={images.InvitationCard} alt="cache0"/>
-        <img src={images.Balaji} alt="cache1"/>
-        <img src={images.Raji} alt="cache2"/>
-        <img src={images.Together} alt="cache3"/>
-        <img src={images.LocationImage} alt="cache3"/>
+      <div style={{ display: 'none' }}>
+        <img src={images.InvitationCard} alt="cache0" />
+        <img src={images.Balaji} alt="cache1" />
+        <img src={images.Raji} alt="cache2" />
+        <img src={images.Together} alt="cache3" />
+        <img src={images.LocationImage} alt="cache3" />
+        <img src={images.TomAndJerry} alt="cache4" />
       </div>
     </Bot>
   );
