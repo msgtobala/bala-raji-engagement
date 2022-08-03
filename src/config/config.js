@@ -50,9 +50,9 @@ export const botConfig = {
   },
   personal_pics: {
     text: [`Here you go`],
-    image: [Images.TomAndJerry],
+    gif: [Images.TomAndJerry],
     text1: [`Ohh!!! Sorry, that's not our real pics 😢`],
-    image1: [Images.Balaji, Images.Raji, Images.Together],
+    image: [Images.Balaji, Images.Raji, Images.Together],
     text2: [`Cute couples right. Yes, we are!!!`],
   },
   join_bless: {

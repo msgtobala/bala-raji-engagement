@@ -60,10 +60,10 @@ const BotMessages = (props) => {
   }, [messages]);
 
   useEffect(() => {
+    const currentChat = chatData[chatIndex.current];
     const timeout = setTimeout(
       () => {
-        const currentChat = chatData[chatIndex.current];
-        if (chatIndex.current < chatData.length) {
+        if (chatIndex.current < chatData.length && currentChat) {
           const updatedMessages = [...messages];
           updatedMessages.push({
             id: new Date(),
@@ -77,7 +77,11 @@ const BotMessages = (props) => {
           resetBotTyping();
         }
       },
-      chatIndex.current === chatData.length ? 0 : 1000
+      chatIndex.current === chatData.length
+        ? 0
+        : currentChat?.type === 'text1'
+        ? 3000
+        : 1000
     );
 
     return () => clearTimeout(timeout);

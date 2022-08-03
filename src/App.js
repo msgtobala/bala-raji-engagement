@@ -48,18 +48,18 @@ const App = () => {
         const textMessages = config[botConfigs[chat]];
         for (let text = 0; text < textMessages.length; text++) {
           botChats.push({
-            type: 'text',
+            type: botConfigs[chat] === 'text1' ? 'text1' : 'text',
             chat: textMessages[text],
             sender: 'bot',
           });
         }
       }
 
-      if (botConfigs[chat] === 'image' || botConfigs[chat] === 'image1') {
+      if (botConfigs[chat] === 'image' || botConfigs[chat] === 'gif') {
         const imageMessages = config[botConfigs[chat]];
         for (let text = 0; text < imageMessages.length; text++) {
           botChats.push({
-            type: 'image',
+            type: botConfigs[chat],
             chat: imageMessages[text],
             sender: 'bot',
           });
@@ -76,7 +76,6 @@ const App = () => {
           });
         }
       }
-      console.log(botConfigs[chat]);
     }
     return botChats;
   };
@@ -115,8 +114,6 @@ const App = () => {
   }, [showBottomBar]);
 
   useEffect(() => {
-    var goFS = document.getElementById('goFS');
-    goFS.click();
     addInitialChatData();
   }, []);
 

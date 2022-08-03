@@ -7,7 +7,6 @@ import {
 
 const BotButtonContainer = (props) => {
   const { buttonConfig, showBottomBar, onUserSelection, userSelection } = props;
-  console.log(userSelection);
 
   return (
     <StyledBotButtonContainer

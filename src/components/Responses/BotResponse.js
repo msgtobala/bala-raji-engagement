@@ -11,12 +11,12 @@ const BotResponse = (props) => {
   const { response, audioRef, videoRef } = props;
   return (
     <StyledBotResponse>
-      {response.type === 'text' && (
+      {(response.type === 'text' || response.type === 'text1') && (
         <BotChatBubble>
           <span dangerouslySetInnerHTML={{ __html: response.chat }}></span>
         </BotChatBubble>
       )}
-      {response.type === 'image' && (
+      {(response.type === 'image' || response.type === 'gif') && (
         <MessageBotImage>
           <img data-action="zoom" src={response.chat} alt="" />
         </MessageBotImage>
