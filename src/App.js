@@ -25,7 +25,7 @@ const App = () => {
   const playAudio = () => {
     if (audioRef.current) {
       audioRef.current.src = Audios.EngagementSong;
-      // audioRef.current.play();
+      audioRef.current.play();
     }
   };
 
