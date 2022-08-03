@@ -145,6 +145,9 @@ const App = () => {
         <img src={images.Together} alt="cache3" />
         <img src={images.LocationImage} alt="cache3" />
         <img src={images.TomAndJerry} alt="cache4" />
+        <audio>
+          <source type="audio/mpeg" src={Audios.EngagementSong} />
+        </audio>
       </div>
     </Bot>
   );
