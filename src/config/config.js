@@ -21,7 +21,7 @@ export const buttonConfig = [
     id: 'personal_pics',
   },
   {
-    label: 'Are you excited to see us together? 🤞🏼',
+    label: 'We are excited to see us together? 🤞🏼',
     id: 'join_bless',
   },
 ];
@@ -51,7 +51,7 @@ export const botConfig = {
   personal_pics: {
     text: [`Here you go`],
     image: [Images.Balaji, Images.Raji, Images.Together],
-    text1: [`Cute couples right`, `Yes, we are!!!`],
+    text1: [`Cute couples right, Yes, we are!!!`],
   },
   join_bless: {
     text: [`Thanks we meet you on our engagement day!`],
