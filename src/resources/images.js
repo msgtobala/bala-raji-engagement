@@ -5,7 +5,8 @@ import InvitationCard from '../assets/images/invitation-card.png';
 import LocationImage from '../assets/images/location.png';
 import CoverPic from '../assets/images/cover1.jpeg';
 import LoaderImg from '../assets/images/loading.gif';
-import TomAndJerry from "../assets/images/tom_jerry.gif";
+import TomAndJerry from '../assets/images/tom_jerry.gif';
+import BRLogo from '../assets/images/BR_logo.png';
 
 const images = {
   Balaji,
@@ -15,7 +16,8 @@ const images = {
   LocationImage,
   CoverPic,
   LoaderImg,
-  TomAndJerry
+  TomAndJerry,
+  BRLogo,
 };
 
 export default images;

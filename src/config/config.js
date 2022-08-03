@@ -57,7 +57,7 @@ export const botConfig = {
   },
   join_bless: {
     text: [`Thanks we meet you on our engagement day!`],
-    image: [Images.Together],
+    image: [Images.BRLogo],
   },
 };
 
